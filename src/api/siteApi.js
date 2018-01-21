@@ -26,7 +26,7 @@ class SiteApi {
   }
 
   static filterSearchResult(data, searchTerm) {
-    if (searchTerm == "") return null;
+    if (searchTerm.trim() == "") return null;
 
     let searchTermArr = searchTerm.split(",");
     return data.sites.filter(site => {
@@ -40,9 +40,9 @@ class SiteApi {
   }
 
   static processfilter(data, site, search) {
-    if (search == "") return false;
+    if (search.trim() == "") return false;
 
-    const searchRE = new RegExp(search, "i");
+    const searchRE = new RegExp(search.trim(), "i");
     //match the search term with site name
     if (site.siteName.match(searchRE)) return true;
 
